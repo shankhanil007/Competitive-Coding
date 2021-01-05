@@ -54,8 +54,15 @@ int main()
         {
             if (!even.empty())
             {
-                a += even[even.size() - 1];
-                even.pop_back();
+                if (!odd.empty() && even[even.size() - 1] <= odd[odd.size() - 1])
+                {
+                    odd.pop_back();
+                }
+                else
+                {
+                    a += even[even.size() - 1];
+                    even.pop_back();
+                }
             }
             else if (!odd.empty())
             {
@@ -66,8 +73,15 @@ int main()
 
             if (!odd.empty())
             {
-                b += odd[odd.size() - 1];
-                odd.pop_back();
+                if (!even.empty() && even[even.size() - 1] >= odd[odd.size() - 1])
+                {
+                    even.pop_back();
+                }
+                else
+                {
+                    b += odd[odd.size() - 1];
+                    odd.pop_back();
+                }
             }
             else if (!even.empty())
             {
